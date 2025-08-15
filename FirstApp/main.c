@@ -9,8 +9,11 @@
 
 int main()
 {
-    // insert code here...
-    printf("Hello, World!\n");
-    printf("Thank you! \n");
+    double weight;
+    weight =20.57;
+    char ch;
+    ch = " A ";
+    
     return 0;
+    
 }
