@@ -6,14 +6,17 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
-    double weight;
-    weight =20.57;
-    char ch;
-    ch = " A ";
+    int id = 5;
+    int age = 20;
+    double weight = 50.75;
+    char grade = "A";
     
-    return 0;
+    printf("The content of ID is: %d, age = %d, weight = %f\n", id, age, weight);
+           
+           return 0;
     
 }
