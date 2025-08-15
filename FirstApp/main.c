@@ -10,12 +10,8 @@
 
 int main()
 {
-    int age;
-
-    printf("Enter Age: ");
-    scanf("%d", &age);
-    
-    printf("Age = %d\n", age);
-    return 0;
-    
+    int aVar = 0xa;
+    printf("Content of aVar = %d\n", aVar);
+    printf("Content of aVar = %o\n", aVar);
+    printf("Content of aVar = %x\n", aVar);
 }
