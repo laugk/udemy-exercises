@@ -10,8 +10,15 @@
 
 int main()
 {
-    int aVar = 0xa;
-    printf("Content of aVar = %d\n", aVar);
-    printf("Content of aVar = %o\n", aVar);
-    printf("Content of aVar = %x\n", aVar);
+    int a = 10, b = 2;
+    int c;
+    c = a*b;
+    printf("%d\n", c);
+    
+    b = a/b;
+    printf("%d\n", b);
+    
+    
+    return 0;
+    
 }
