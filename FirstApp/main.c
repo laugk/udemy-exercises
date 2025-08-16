@@ -13,15 +13,10 @@ Finally print the average into console using printf.
 int main(void)
 {
     
-    int a , b, c;
-    
-    printf("Enter first number: \n");
-    scanf("%d", &a);
-    printf("Enter second number: \n");
-    scanf("%d", &b);
-    printf("Enter third number: \n");
-    scanf("%d", &c);
-    printf("Average is: %.5f\n", (a+b+c)/3.0);
+    int i, age;
+    age = 17;
+    i = age>=13 && age<=19;
+    printf("i = %d\n", i);
     
 
     return 0;
