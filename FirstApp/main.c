@@ -4,11 +4,11 @@
 int main(void)
 {
 
-    int i, age;
-    age = 15;
-    i = age>=10 || age<=60;
+    int a = 100, b = 70, i;
+    
+    i = !(a>b);
     printf("i = %d\n", i);
     
 
-    return 0;
+    return 200;
 }
