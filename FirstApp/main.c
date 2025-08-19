@@ -4,14 +4,22 @@
 int main(void)
 {
     
-    int x = -1;
+    int a, b, max;
     
-    int y = -2;
+    printf("Enter first number: \n");
+    scanf("%d", &a);
+    printf("Enter second number: \n");
+    scanf("%d", &b);
+    if (a>b) {
+        max = a;
+    }
+    else{
+        max = b;
+    }
     
-    int z = ++x || ++y;
-    
-    printf("%d,%d,%d", x, y, z);
+    printf("Maximum is %d\n", max);
     
     return 200;
+    
     
 }
