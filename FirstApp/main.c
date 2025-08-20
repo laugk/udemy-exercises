@@ -4,24 +4,32 @@
 int main(void)
 {
     
-    int  a;
+    double income, tax, tax0, tax10, tax20, tax25;
     
-    printf("Enter number of neighbours: \n" );
-    scanf("%d", &a);
+    tax0 = 0.0;
+    tax10= 0.1;
+    tax20= 0.2;
+    tax25= 0.25;
     
-    if (a == 0) {
-        printf("Sad and will force you to listen to his story, will make you late.");
-    } else if (a == 1){
-        printf("He will ask you to deliver half of the pizza to his only neighbor, you may be late.\n");
-    }    else if (a >=2 && a<= 5) {
-                printf("Will have great mood and will be singing song. May crack joke as well. You will get good tips, definitely.\n");
-    }       else if (a == 7){
-                    printf("He will be making great drink for his neighbors and will invite you to taste. But will not give you tip.\n");
-    }           else if (a ==6 || a == 8){
-        printf("Too angry and furious, deliver the pizza and leave ASAP.\n");
-    }               else if (a >= 9)
-        printf("Invalid number of neighbours\n");
+    printf("Enter your income: ");
+    scanf("%lf", &income);
+    if (income < 10000) {
+        printf("Tax amount is %f\n", income * tax0 );
+    }
+        else if (income >= 10000 && income < 20000) {
+            printf("Tax amount is %f\n", income * tax10);
+        }
         
+        else if (income >= 20000 && income < 50000) {
+            printf("Tax amount is %f\n", income * tax20);
+        }
+        else if (income > 50000) {
+            printf("Tax amount is %f\n", income * tax25 * 1.1);
+            
+        }
+        else {
+            printf("Error 404 : Non recognised character found");
+        }
         
     return 200;
         
