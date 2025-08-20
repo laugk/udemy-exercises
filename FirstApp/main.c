@@ -4,20 +4,20 @@
 int main(void)
 {
     
-    int a, b, max;
+    int  a, b, c, max;
     
-    printf("Enter first number: \n");
-    scanf("%d", &a);
-    printf("Enter second number: \n");
-    scanf("%d", &b);
-    if (a>b) {
+    printf("Enter 3 numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+    if(a>b && a>c)
         max = a;
-    }
-    else{
+    else if (b>c)
         max = b;
-    }
+    else
+        max = c;
     
     printf("Maximum is %d\n", max);
+
+    
     
     return 200;
     
