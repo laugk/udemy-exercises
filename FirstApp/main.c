@@ -1,25 +1,47 @@
 #include <stdio.h>
 
-//leap year calculation
+int main(){
+    int units;    // you need to input this
+    double bill_amount = 0.0;  // you need to calculate this
 
-int main(void){
     
-    int age;
+    // prompt user to input unit consumed using printf and then
+    // using scanf read the value into the unit variable.
+    printf("Enter unit consumed: ");
+    scanf("%d", &units);
+
     
-    printf("Enter your age: ");
-    scanf("%d", &age);
+
     
-    switch (age) {
-        case 13:
-        case 14:
-        case 15:
-        case 16:
-        case 17:
-        case 18:
-        case 19: printf("Teenage \n");
-            break;
-            
-        default: printf("Not teenage\n");
+    // Now, use if-elseif to decide about rate
+    if (units < 0){
+        printf("Unit consumed cannot be negative\n");
+        
     }
+    else if(units >= 0 && units <= 100){
+        bill_amount = units * 0.2;     // for this range 0.2 is the rate
+    }
+    else if(units >100 && units<=250){
+        bill_amount = 0.2 * 100 + ((units - 100) * 0.5);
+    }
+    else if(units >250 && units<=500){
+        bill_amount = (0.2 * 100) + (0.5*150) + ((units - 250) * 0.75);
+    }
+    else{        // for anything >500
+        bill_amount = (0.2 * 100) + (0.5 * 150) + (0.75 * 250 ) + (units - 500) * 1 ;
+
+    }
+
+    
+    
+    // ** finally print the bill amount here, please note that if the unit consumed is
+    // invalid that is negative then no bill should be printed. **
+
+    
+     printf("Input Unit Consumed: %d\n", units);
+     printf("Total bill: $%.2f for %d units \n", bill_amount, units);
+     printf("Thank you!\n");
+
+    
     return 0;
 }
