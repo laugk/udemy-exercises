@@ -4,18 +4,22 @@
 
 int main(void){
     
-    int n;
-    printf("Enter a number: ");
-    scanf("%d", &n );
+    int age;
     
-    switch(n) {
-        case 1: printf("One\n");
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    switch (age) {
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19: printf("Teenage \n");
             break;
-        case 2: printf("Two\n");
-            break;
-        case 3: printf("Three\n");
-            break;
-        default: printf("Invalid number\n");
+            
+        default: printf("Not teenage\n");
     }
     return 0;
 }
