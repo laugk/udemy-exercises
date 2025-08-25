@@ -3,16 +3,21 @@
 
 int main(void){
  
-    int n, sum, i;
-    printf("Enter n: ");
-    scanf("%d", &n);
-    
+    int number, sum;
     sum = 0;
-    i = 1;
-    while (i<=n){
-        sum = sum + i;
-        i++;
+    
+    printf("Enter a number, zero to terminate: ");
+    scanf("%d", &number);
+    
+    while(number<0 || number>0){
+        sum += number; //sum = sum + number
+        printf("Enter a number, zero to terminate: ");
+        scanf("%d", &number);
     }
-    printf("Sum of first %d natual numbers = %d\n", n, sum);
+    
+    
+    printf("Sum of the numbers: %d\n", sum);
+    
+    
     return 0;
 }
