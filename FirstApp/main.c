@@ -1,23 +1,21 @@
 #include <stdio.h>
-#include <unistd.h>
 
 int main(void){
- 
-    int number, sum;
-    sum = 0;
+    int sum = 0;
     
-    printf("Enter a number, zero to terminate: ");
-    scanf("%d", &number);
+    int n = 99;
     
-    while(number<0 || number>0){
-        sum += number; //sum = sum + number
-        printf("Enter a number, zero to terminate: ");
-        scanf("%d", &number);
+    int i = 1; // Initialize loop variable i to 1
+    
+    while (i <= n) {
+        if (i % 3 == 0 && i % 5 != 0) {
+            sum += i; // Add the current integer to sum
+        }
+        i++; // Increment i for the next iteration
     }
     
-    
-    printf("Sum of the numbers: %d\n", sum);
-    
+    printf("%d\n", sum);
     
     return 0;
+    
 }
