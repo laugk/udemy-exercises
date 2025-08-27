@@ -13,19 +13,19 @@ int main(void) {
     
     for(i = 1; i <= n1; ++i ) {
         for (j = 1; j<=i; ++j) {
-            printf("*");
+            printf("%d ", i);
         }
         printf("\n");
     }
     
     
     
-    for (i = n2; i >= 1; --i) {
-        for (j = 1; j <= i; ++j) {
-            printf("*");
-        }
-        printf("\n");
-    }
+  //  for (i = n2; i >= 1; --i) {
+  //      for (j = 1; j <= i; ++j) {
+  //          printf("*");
+  //      }
+ //       printf("\n");
+ //   }
     
     
     
