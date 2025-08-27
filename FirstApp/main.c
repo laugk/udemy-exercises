@@ -3,21 +3,22 @@
 
 int main(void) {
     
+    int n;      ///line numbers
+    int i, j;   /// i = line number, j = column number in the line
     
-    int n, sum, i;
-    
-    printf("Enter n: ");
+    printf("Enter how many lines: ");
     scanf("%d", &n);
     
-    for (sum =0, i =1; i<=n; i++)
-        sum = sum + i;
+    for (i = 1; i <= n; ++i) {
+        for (j = 1; j <= i; ++j) {
+            printf("*");
+        }
+        printf("\n");
+    }
     
     
-    printf("Sum of first %d natural numbers is %d\n", n, sum);
+    
+    
     
     return 0;
-    
 }
-
-
-
