@@ -13,7 +13,12 @@ int main(void) {
     
     for(i = 1; i <= n1; ++i ) {
         for (j = 1; j<=i; ++j) {
-            printf("%d ", i);
+            if ((i+j)% 2 == 0) {
+                printf("0 ");
+            } else {
+                printf("1 ");
+            }
+            
         }
         printf("\n");
     }
