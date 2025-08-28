@@ -11,14 +11,24 @@ int main(void) {
     scanf("%d", &n);
     
     int x[n];
-    int i;
+    int i, j, num, isDuplicate;
+    srand(time(NULL));
     for (i=0; i<n; i++) {
-        printf("Enter element to index %d: ", i);
-        scanf("%d", &x[i]);
+        do {
+            num = (rand () % 49) + 1; //generate a number from 1 to 49
+            isDuplicate = 0; //assume number is not duplicate
+            for (j=0; j<i; j++) {
+                if (x[j] == num) {
+                    isDuplicate = 1;
+                    break;
+                }
+            }
+        } while (isDuplicate);
+        x[i] = num;
     }
     printf("Content of array: \n");
     for(i=0; i<n; i++) {
-        printf("x[%d] = %d\n", i, x[i]);
+        printf("%4d\n", x[i]);
     }
 }
 
