@@ -1,20 +1,21 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(void) {
     
     
-    int count;
-    char response;
-
+    int k, i;
+    long t;
+    t = time(NULL);
     
-    for(count=1;count<=100;count++) {
-
-        if (count%2 == 0)
-            continue;
-        
-        printf("Count = %d\n", count);
+    srand(t);
+    
+    for (i=1;i<=10;i++) {
+        k = rand();
+        printf("%d\n", k);
     }
+    
     
     return 0;
     
