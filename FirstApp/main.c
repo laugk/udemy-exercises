@@ -4,37 +4,24 @@
 int main(void) {
     
     
-    int n1, n2;      ///line numbers
-    int i, j;   /// i = line number, j = column number in the line
+    int age;
+    char response;
     
-    printf("Enter how many lines: ");
-    scanf("%d", &n1);
-    n2 = n1;
+    do {
     
-    for(i = 1; i <= n1; ++i ) {
-        for (j = 1; j<=i; ++j) {
-            if ((i+j)% 2 == 0) {
-                printf("0 ");
-            } else {
-                printf("1 ");
-            }
-            
-        }
-        printf("\n");
-    }
-    
-    
-    
-  //  for (i = n2; i >= 1; --i) {
-  //      for (j = 1; j <= i; ++j) {
-  //          printf("*");
-  //      }
- //       printf("\n");
- //   }
-    
-    
-    
-    
+        printf("Enter age: ");
+        scanf("%d", &age);
+        
+        if (age >=13 && age <=19)
+            printf("Teenage\n");
+        else
+            printf("Not Teenage\n");
+        
+        
+        printf("Do you want to continue? (y/n): ");
+        scanf(" %c", &response);
+        
+    }while (response == 'y' || response == 'Y');
     
     return 0;
     
