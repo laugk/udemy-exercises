@@ -4,24 +4,18 @@
 int main(void) {
     
     
-    int age;
+    int count;
     char response;
+
     
-    do {
-    
-        printf("Enter age: ");
-        scanf("%d", &age);
-        
-        if (age >=13 && age <=19)
-            printf("Teenage\n");
-        else
-            printf("Not Teenage\n");
-        
-        
-        printf("Do you want to continue? (y/n): ");
+    for(count=1;count<=100;count++) {
+        printf("Count = %d\n", count);
+        printf("print next? enter Y/y to continue or any other key to terminate ");
         scanf(" %c", &response);
-        
-    }while (response == 'y' || response == 'Y');
+        if (response != 'Y' && response != 'y')
+            break;
+    }
+    printf("Terminated at count = %d\n", count);
     
     return 0;
     
