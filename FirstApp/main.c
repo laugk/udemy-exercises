@@ -7,32 +7,31 @@
 int main(void) {
     
     int n;
-    printf("Enter size of array: ");
+    printf("Enter no of elements: ");
     scanf("%d", &n);
     
     int x[n];
-    int i, j, num, isDuplicate;
+    int i;
     srand(time(NULL));
-    for (i=0; i<n; i++) {
-        do {
-            num = (rand () % 49) + 1; //generate a number from 1 to 49
-            isDuplicate = 0; //assume number is not duplicate
-            for (j=0; j<i; j++) {
-                if (x[j] == num) {
-                    isDuplicate = 1;
-                    break;
-                }
-            }
-        } while (isDuplicate);
-        x[i] = num;
-    }
-    printf("Content of array: \n");
+    
     for(i=0; i<n; i++) {
-        printf("%4d\n", x[i]);
+        x[i] = rand() % 100;
     }
+    
+    printf("Content of the array: \n");
+    int sum = 0;
+    for (i=0; i<n; i++) {
+        printf("%4d", x[i]);
+        sum = sum + x[i];
+    }
+    printf("\n\n");
+    printf("Sum is %d\n",sum);
+    
+    
+    return 0;
 }
 
-    
+
     
     
     
