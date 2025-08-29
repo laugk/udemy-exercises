@@ -26,6 +26,8 @@ int main(void) {
     }
     printf("\n\n");
     printf("Sum is %d\n",sum);
+    double avg = (double)sum / n;
+    printf("Average of the numbers: %lf\n", avg);
     
     
     return 0;
