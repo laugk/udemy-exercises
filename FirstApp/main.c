@@ -1,43 +1,53 @@
 #include <stdio.h>
-#include <math.h> // Required for cbrt function
 
 int main(void) {
-    float inputArray[20], outputArray[20]; // Declare two arrays with 20 elements
-    int i, numElements = 0; // Initialize a counter variable and set the number of input elements to zero
-    float input, sum1 = 0.0, sum2 = 0.0; // Initialize sum variables to zero
+    int arr[10] = {0};  // Declare and initialize the array with size 10
+    int n, i, d;
 
-    printf("Enter maximum 20 numbers, terminate with 0.0\n"); // Prompt user for input
+    printf("You can input at most 10 digits number\n");
+    printf("Enter total number of digits in the number: ");
+    scanf("%d", &n);
 
-    do { // Start of loop
-        if (numElements == 0)
-            printf("First number: ");
-        else
-            printf("Next: ");
-
-        scanf("%f", &input); // Read the input from user
-        inputArray[numElements] = input; // Store the input in the first array
-
-        if (numElements % 2 == 0) // Check if the index is even
-            outputArray[numElements] = 2 * input; // Double the value and store it in the second array
-        else
-            outputArray[numElements] = cbrt(input); // Calculate the cube root and store it in the second array
-
-        numElements++; // Increment the number of input elements
-    } while (input != 0.0 && numElements < 20); // Continue looping until user enters 0 or inputs exceed 20
-
-    printf("\nThere are in total %d numbers given as input\n\n", --numElements); // Print the number of inputs given
-
-    printf("Input Array       2nd Array\n"); // Print headers for output
-
-    for (i = 0; i < numElements; i++) { // Loop through all elements to print and calculate sums
-        printf("%10.5f      %10.5f\n", inputArray[i], outputArray[i]); // Print the contents of both arrays in two columns
-        sum1 += inputArray[i]; // Calculate the sum of the first array
-        sum2 += outputArray[i]; // Calculate the sum of the second array
+    // Check if the number of digits is valid
+    if (n > 10) {
+        printf("Error: Number of digits exceeded limit.\n");
+        return 1;  // Return error code
     }
 
-    printf("\nSum of the first array:   %10.5f\n", sum1); // Print the sum of the first array
-    printf("Sum of the second array:  %10.5f\n", sum2); // Print the sum of the second array
+    // Input each digit one at a time and store it in the array
+    for (i = 10 - n; i < 10; i++) {
+        printf("Enter digit #%d: ", 10 - i);
+        scanf("%d", &arr[i]);
+    }
 
+    printf("\nThe input number is: ");
+    for (i = 0; i < 10; i++) {
+        printf("%d", arr[i]);
+    }
+
+    // Input the digit to be added
+    printf("\nEnter a digit between 1 and 9 to add with the number: ");
+    scanf("%d", &d);
+
+    // Check if the digit is valid
+    if (d < 1 || d > 9) {
+        printf("Error: Invalid digit.\n");
+        return 2;  // Return error code
+    }
+
+    // Add the digit to the number starting from index 9
+    int carry = d;
+    for (i = 9; i >= 0 && carry > 0; i--) {
+        int sum = arr[i] + carry;
+        arr[i] = sum % 10;
+        carry = sum / 10;
+    }
+
+    printf("\nThe number after addition is: ");
+    for (i = 0; i < 10; i++) {
+        printf("%d", arr[i]);
+        
+    }
+    printf("\n");
     return 0;
 }
-
