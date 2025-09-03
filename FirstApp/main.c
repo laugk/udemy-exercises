@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(void){
 
@@ -8,7 +9,9 @@ int main(void){
 
     int i;
     
-    for (i=0; str[i]!='\0'; i++);
+    // for (i=0; str[i]!='\0'; i++);
+    
+    i = strlen(str);
     printf("The string length is %d\n", i);
     
     
