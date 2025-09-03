@@ -3,27 +3,11 @@
 
 int main(void){
 
-    char str[80];
-    printf("Enter a string: ");
-    scanf("%[^\n]", str);
-
-    int i, countAlpha = 0, countSpace = 0;
+    char first[80] = "Chocolate Candy";
+    char second[80];
     
-    // for (i=0; str[i]!='\0'; i++);
-    
-    i = strlen(str);
-    
-    for(i=0; str[i]!='\0'; i++) {
-        if (((str[i]>='A' && str[i]<='Z') || (str[i]>='a' && str[i] <='z')))
-            countAlpha++; //count alphabets
-        else if (str[i] == ' ')
-            countSpace++; //count spaces
-        
-    }
-
-    printf("Total alphabetic characters found: %d\n", countAlpha);
-    printf("Total space characters found: %d\n", countSpace);
-    
+    strcpy(second, first); //copy string from first to second
+    printf("Copied string %s\n", second);
     
     
     return 0;
