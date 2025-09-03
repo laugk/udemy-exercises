@@ -7,12 +7,22 @@ int main(void){
     printf("Enter a string: ");
     scanf("%[^\n]", str);
 
-    int i;
+    int i, countAlpha = 0, countSpace = 0;
     
     // for (i=0; str[i]!='\0'; i++);
     
     i = strlen(str);
-    printf("The string length is %d\n", i);
+    
+    for(i=0; str[i]!='\0'; i++) {
+        if (((str[i]>='A' && str[i]<='Z') || (str[i]>='a' && str[i] <='z')))
+            countAlpha++; //count alphabets
+        else if (str[i] == ' ')
+            countSpace++; //count spaces
+        
+    }
+
+    printf("Total alphabetic characters found: %d\n", countAlpha);
+    printf("Total space characters found: %d\n", countSpace);
     
     
     
