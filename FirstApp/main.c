@@ -1,81 +1,74 @@
 #include <stdio.h>
 #include <string.h>
+
 /*
-Instructions:
-In this assignment, you will need to find the longest word in a string.
-You can assume that,
-        1. each word ends with a space or a NULL character (for the last word).
-        2. There is only one space in between the words.
-In the program you need to use my_str array as the string and you need to use the
-initialized string to find the longest word. No need to input another string from
-user.
+A palindrome is a string that is same in both forward and backward reading.
+Example:
+   "madam"
+   "racecar"
+   "a man a plan a canal panama"
+   "radar"
+You will write a program that will test if a given string is a palingdrome or not.
+Your program will ask the user to input a string and if the string is a palindrome program
+will just print "Yes, it is a Palindrome", otherwise will print "No, not a Palindrome".
 
-You can use library functions like strlen()/ strcpy() for string operations
-Output: Longest word and the length of that word.
+Please note that:
+1. Your you need to check in case-insensitive way, that means: Madam or madam both should be
+detected as Palindrome.
 
---If there are more than one longest words (more than one word with same longest size)
-in the string, then your program just need to print the last one.
+2. There can be (any number of ) spaces in between the words.
+    "A man a plan a canal panama"
+        OR
+    "A     man    a   pla n a cana l Panama"
+    both the strings must be detected as Palindrome.
+3.There can be punctuations in between the words, for this assignments,
+we consider only 4 punctuations,   . ?  ! and ,
+
+Your program will just need to ignore them (treat them as space).
+    "Cigar? Toss it in a can. It is so tragic."
+    Should be detected as palindrome.
+
+ *** For this assignment I will not write any instructions or guidance, you are free
+        to implement it with your own way, you can use the string.h functions
+
+    Good luck.
 
 */
 
-int main(void){
-    // find the longest word in the string my_str
-    // (I have used British spelling of program :) )
-    char my_str[] = "In this programme we will find the longest word in a string";
-    /*
-     You can test using the following initializations as well:
-     char my_str[] = "xxx xxxx xxxxx xxxxxxx xxxxxx xx xx xxxxxxxx aaaaaaaa ooooooooooo";
-     char my_str[] = "gg aaaa aaaaaa aaaaaaaaaaaaaaaa";
-     */
-    
-    
-    int longest = 0; // initially longest word length is 0
-    char word[20];  // You will need to find each word from my_str and keep in this array
-    char longestWord[20]; // will keep the current longest word here
-    
-    int i = 0, j;
-    
-    while(my_str[i]!='\0'){
-        j = 0;  // use this as index of word array
-        // Instructions:
-        // here you will need to copy characters from my_str to word,
-        // you need to continue doing the copy of characters from ith index of my_str
-        // to the jth index of word until you get a space (or NULL for the last word).
-        // That means continue copy if the current character is not a space AND not a NULL
-        //
-        // When the word is copied you need to append a NULL at the end of the word.
-        // Now check if the length of the word is greater than longest, if so, then
-        // update longest and copy the word to longestWord (you may use strcpy).
-        //
-        // If you are still not at the end of my_str then update i
-        
-        
-        // copy characters from my_str to word until a space or NULL is encountered
-        while (my_str[i] != ' ' && my_str[i] != '\0') {
-            word[j++] = my_str[i++];
-        }
-        
-        word[j] = '\0'; // append a null character to the end of the word
-        
-        // check if the length of the current word is greater than longest
-        int wordLength = strlen(word);
-        if (wordLength > longest) {
-            longest = wordLength; // update longest with the new value
-            strcpy(longestWord, word); // copy the contents of word into longestWord
-        }
-        
-        if (my_str[i] != '\0') {
-            i++; // move to the next character in my_str
-        }
+
+// Function to check if a given string is a palindrome or not
+int isPalindrome(char *str) {
+    int head, tail; // declare two pointers to traverse the string from both ends
+
+    // Loop until the pointers meet in the middle of the string
+    for (head = 0, tail = strlen(str) - 1; head < tail; head++, tail--) {
+        // Ignore non-alphabetic characters at the beginning of the string
+        while (!((str[head] >= 'a' && str[head] <= 'z') || (str[head] >= 'A' && str[head] <= 'Z')) && head < tail)
+            head++;
+        // Ignore non-alphabetic characters at the end of the string
+        while (!((str[tail] >= 'a' && str[tail] <= 'z') || (str[tail] >= 'A' && str[tail] <= 'Z')) && head < tail)
+            tail--;
+
+        // Compare characters at both ends of the string, ignoring case
+        if ((str[head] | 0x20) != (str[tail] | 0x20))
+            return 0; // return 0 if characters are not equal
     }
-    printf("Longest word: %s\n", longestWord);
-    printf("Length: %d\n", longest);
-    
-    return 0;
+
+    return 1; // return 1 if all characters are equal
 }
 
+int main(void) {
+    char string[100]; // declare a character array to store the input string
 
+    printf("Enter a string: "); // prompt user to enter a string
+    fgets(string, sizeof(string), stdin); // read input string from user
 
+    // Call isPalindrome function to check if the input string is a palindrome or not
+    if (isPalindrome(string)) {
+        printf("Yes, it is Palindrome!\n"); // print message if input string is a palindrome
+    } else {
+        printf("No, not a Palindrome\n"); // print message if input string is not a palindrome
+    }
 
-
-
+    return 0; // return 0 to indicate successful execution of the program
+}
