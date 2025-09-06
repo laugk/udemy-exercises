@@ -51,3 +51,21 @@
         return 0;
     }
         
+
+
+// actual use case of the function
+
+#include <stdio.h>
+
+// Function prototype (declaration)
+unsigned int my_function(unsigned int first, unsigned int second, unsigned int third);
+
+int main() {
+    // Call my_function with arguments 10, 20, and 5
+    unsigned int result = my_function(10, 20, 3);
+
+    // Print the result
+    printf("Result: %u\n", result);
+
+    return 0;
+}
