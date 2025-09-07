@@ -1,52 +1,31 @@
-#include <stdio.h>
+#include <math.h> // Include math library to use sqrt function
 
-
-int is_lower_case(char);
-int is_upper_case(char);
-char to_upper_case(char);
-char to_lower_case(char);
-
-char to_lower_case(char ch){
-    if (is_upper_case(ch))
-        return ch + 32;
-    else
-        return ch;
-}
-char to_upper_case(char ch) {
-    if (is_lower_case(ch))
-        return ch - 32;
-    else
-        return ch;
+// Function to check if a number is prime
+int isPrime(int k) {
+    int i;
+    // Loop through all numbers from 2 to square root of k (inclusive)
+    for(i = 2; i <= sqrt(k); ++i){
+        // If k is divisible by any number in the range, it's not prime
+        if (k % i == 0){
+            return 0;
+        }
+    }
+    // If no factors found, then it's a prime number
+    return 1;
 }
 
+// Function to calculate sum of all prime numbers less than or equal to a given upper bound
+int sum_prime (int ub) {
+    int count, sum = 0; // Initialize count and sum variables
 
+    // Loop through all numbers from 2 to the upper bound (inclusive)
+    for (count = 2; count <= ub; count++) {
+        // If the number is prime, add it to the sum
+        if (isPrime(count))
+            sum += count;
+    }
 
-int is_lower_case(char ch) {
-    if (ch >='a' && ch <='z')
-        return 1;
-    else
-        return 0;
+    // Return the calculated sum
+    return sum;
 }
 
-int is_upper_case(char ch) {
-    if(ch>='A' && ch<='Z')
-        return 1;
-    else
-        return 0;
-}
-
-
-int main(void) {
-    char k;
-    
-    k = 'A';
-    k = to_lower_case(k);
-    printf("Lower case equivalent: %c\n", k);
-    
-    
-    k = 'q';
-    k = to_upper_case(k);
-    printf("Upper case equivalent: %c\n", k);
-    
-    return 0;
-}
