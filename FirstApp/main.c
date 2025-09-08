@@ -1,21 +1,16 @@
-#include <stdio.h> // Preprocessor directive to include the standard input/output library, which contains functions like printf and scanf
+#include <stdio.h>
 
-
-/*
- Write a recursive function to get the nth number of fibonacci series.
- Fibonacci Series: 1,1,2,3,5,8....
- */
-
-
-long getFibbTerm(int t) {
-    if ( t==1 || t ==2 )
-        return 1;
-    return getFibbTerm(t-1) + getFibbTerm(t-2);
-}
-
-int main (void) {
-    int t;
-    for (t=1; t<=10; t++)
-        printf("%ld\n", getFibbTerm(t));
-    return 0;
+int main (void) { // Function definition for the main function, which is the entry point of a C program
+    int *p, *q; // Declare two pointer variables 'p' and 'q' that can store addresses of integer values
+    int **k; // Declare a double pointer variable 'k' that can store the address of another pointer variable
+    int x = 100; // Declare and initialize an integer variable 'x' with the value 100
+    p = &x; // Assign the address of 'x' to the pointer variable 'p', making 'p' point to 'x'
+    
+    k = &p; // Assign the address of 'p' to the double pointer variable 'k', making 'k' point to 'p'
+    printf("%d\n", **k); // Print the value of 'x' indirectly by dereferencing the double pointer 'k' twice (once for 'p' and once for 'x')
+    
+    **k = **k + 1; // Increment the value of 'x' by 1 indirectly using the double pointer 'k', which points to 'p' that points to 'x'
+    printf("%d\n", x); // Print the updated value of 'x' directly to verify the increment operation
+    return 0; // Return 0 to indicate successful execution of the program
+    
 }
