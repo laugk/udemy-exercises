@@ -1,20 +1,22 @@
 #include <stdio.h>
 
-
-void doWork(int a, int b, int c, int *p, int *q) {
-    *p = a + b + c;
-    if (a>b && a >c)
-        *q = a;
-    else if (b>c)
-        *q = b;
-    else
-        *q = c;
+void printArray (int *p_arr, int n) {
+    int i;
+    printf("Content of array: ");
+    for(i=0; i<n; i++) {
+        printf("%4d", *(p_arr+i));
+        
+    }
+    printf("\n");
 }
 
 
-int main(void) {
-    int x = 10, y = 50, z = 15, sum, max;
-    doWork(x,y,z, &sum, &max);
-    printf("Sum of %d, Max = %d\n", sum, max);
+
+int main() {
+    int x[] = {10,20,30,40,50};
+    int y[] = {1,2,3,4,5,6};
+    printArray(x,5);
+    printArray(y,6);
     
+    return 0;
 }
