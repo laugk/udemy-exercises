@@ -1,11 +1,11 @@
-//
+/*
 //  Coding Exercise 12 Convert Alphabets in String Pointer Storage.c
 //  FirstApp
 //
 //  Created by GK on 10/9/25.
 //
 
-#include <iostream>
+//#include <iostream>
 using namespace std;
 
 // Write your code below. You will need to write only one function, convert, please read the problem statement above to write the function.  The prototype of the function must match with the tester.
@@ -55,4 +55,4 @@ int convert(char *str, int flag){
 }
 
 
-
+*/

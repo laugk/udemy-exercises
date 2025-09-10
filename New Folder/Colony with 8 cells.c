@@ -1,3 +1,5 @@
+/*
+
 //
 //  Colony with 8 cells.c
 //  FirstApp
@@ -48,3 +50,4 @@ int main(void) {
     return 0;
 }
 
+*/

@@ -1,3 +1,5 @@
+/*
+
 //
 //  Tower of Hanoi.c
 //  FirstApp
@@ -28,3 +30,4 @@ int main(void) { // Define the main function, which returns an integer and takes
     toh(5, 1, 2, 3); // Call the toh function with an argument of 3 disks and tower numbers 1 (source), 2 (auxiliary), and 3 (destination)
     return 0; // Return 0 to indicate that the program has executed successfully
 }
+*/

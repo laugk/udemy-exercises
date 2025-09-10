@@ -23,7 +23,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4795298E2E7119440063608E /* Exceptions for "FirstApp" folder in "FirstApp" target */ = {
+		4795299D2E714A060063608E /* Exceptions for "New Folder" folder in "FirstApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Coding Exercise 10 update values from function at the original location .c",
@@ -34,11 +34,16 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		47BABA112E4ECED100BBC299 /* FirstApp */ = {
+		4795299C2E7149FF0063608E /* New Folder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				4795298E2E7119440063608E /* Exceptions for "FirstApp" folder in "FirstApp" target */,
+				4795299D2E714A060063608E /* Exceptions for "New Folder" folder in "FirstApp" target */,
 			);
+			path = "New Folder";
+			sourceTree = "<group>";
+		};
+		47BABA112E4ECED100BBC299 /* FirstApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
 			path = FirstApp;
 			sourceTree = "<group>";
 		};
@@ -58,6 +63,7 @@
 		47BABA062E4ECED100BBC299 = {
 			isa = PBXGroup;
 			children = (
+				4795299C2E7149FF0063608E /* New Folder */,
 				47BABA112E4ECED100BBC299 /* FirstApp */,
 				47BABA102E4ECED100BBC299 /* Products */,
 			);
@@ -87,6 +93,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				4795299C2E7149FF0063608E /* New Folder */,
 				47BABA112E4ECED100BBC299 /* FirstApp */,
 			);
 			name = FirstApp;

@@ -1,3 +1,5 @@
+/*
+
 #include <iostream>
 
 using namespace std;
@@ -53,3 +55,5 @@ void get_max_min_sum(int *arr, int n, int *p_sum){
     *p_sum = max + min;
     
 }
+
+*/

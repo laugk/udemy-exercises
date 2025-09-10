@@ -1,10 +1,12 @@
+/*
+
 #include <stdio.h> // Preprocessor directive to include the standard input/output library, which contains functions like printf and scanf
 
 
-/*
+
  Write a recursive function to get the nth number of fibonacci series.
  Fibonacci Series: 1,1,2,3,5,8....
- */
+ 
 
 
 long getFibbTerm(int t) {
@@ -19,3 +21,5 @@ int main (void) {
         printf("%ld\n", getFibbTerm(t));
     return 0;
 }
+
+*/

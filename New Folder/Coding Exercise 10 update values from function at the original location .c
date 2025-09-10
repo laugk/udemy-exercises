@@ -1,3 +1,4 @@
+
 #include <iostream>
 
 using namespace std;
@@ -8,7 +9,7 @@ using namespace std;
  * They will receive address of 2 integer variables by the tester, those integer variables will be declared by the
  * tester.
  * Your task will be to update those integer variables declared by tester using these pointers p and q.
- */
+
 int update(int *p, int *q){
     // Instruction 1 : Update the integer variable pointed by p: add 10 with that.
     
@@ -24,3 +25,5 @@ int update(int *p, int *q){
     return *p * *q;
     
 }
+
+*/
