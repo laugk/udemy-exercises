@@ -1,3 +1,10 @@
+//
+//  Coding Exercise 12 Convert Alphabets in String Pointer Storage.c
+//  FirstApp
+//
+//  Created by GK on 10/9/25.
+//
+
 #include <iostream>
 using namespace std;
 

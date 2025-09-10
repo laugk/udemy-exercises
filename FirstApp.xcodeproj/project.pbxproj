@@ -22,9 +22,23 @@
 		47BABA0F2E4ECED100BBC299 /* FirstApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FirstApp; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4795298E2E7119440063608E /* Exceptions for "FirstApp" folder in "FirstApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Coding Exercise 10 update values from function at the original location .c",
+				"Coding Exercise 11 Passing one dimensional array as parameter.c",
+			);
+			target = 47BABA0E2E4ECED100BBC299 /* FirstApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		47BABA112E4ECED100BBC299 /* FirstApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4795298E2E7119440063608E /* Exceptions for "FirstApp" folder in "FirstApp" target */,
+			);
 			path = FirstApp;
 			sourceTree = "<group>";
 		};
