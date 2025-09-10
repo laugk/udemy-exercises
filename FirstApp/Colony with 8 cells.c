@@ -1,3 +1,10 @@
+//
+//  Colony with 8 cells.c
+//  FirstApp
+//
+//  Created by GK on 10/9/25.
+//
+
 #include <stdio.h>
 #define size 8
 
@@ -40,5 +47,4 @@ int main(void) {
     eight_colony_cell(arr, 10);
     return 0;
 }
-
 
