@@ -9,7 +9,7 @@ int main (void) {
     printf("Enter how many integers: ");
     scanf("%d", &n);
     
-    p = (int *)malloc(n * sizeof(int));
+    p = (int *)calloc(n , sizeof(int));
     if (p==NULL) {
         printf("Unable to allocate memory\nExiting the program\n");
         exit(1);
