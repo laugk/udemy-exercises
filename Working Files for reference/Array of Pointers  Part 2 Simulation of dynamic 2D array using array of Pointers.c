@@ -1,3 +1,5 @@
+/*
+
 #include <stdio.h>
 #include <stdlib.h>
 //malloc, calloc, realloc
@@ -76,3 +78,5 @@ int main(void) {
 
     return 0;
 }
+
+*/
