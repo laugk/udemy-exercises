@@ -9,7 +9,7 @@ int main (void) {
     printf("Enter how many integers: ");
     scanf("%d", &n);
     
-    p = (int *)calloc(n , sizeof(int));
+    p = (int *)malloc(n * sizeof(int));
     if (p==NULL) {
         printf("Unable to allocate memory\nExiting the program\n");
         exit(1);
@@ -26,8 +26,22 @@ int main (void) {
     for (i=0; i<n; i++) {
         printf("%4d",*(p+i));
     }
-    printf("\n");
+
     
+    int new_no = n +3;
+    p = (int *)realloc(p, new_no * sizeof(int));
+    if (p== NULL) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
     
-    return 0;
+    *(p+n) = 10;
+    *(p+n+1)= 20;
+    *(p+n+2)=30;
+    
+    printf("\nNew Content of the array: \n");
+    for (i=0; i<new_no; i++) {
+        printf("%4d", *(p+i));
+    }
+    free (p);
 }
