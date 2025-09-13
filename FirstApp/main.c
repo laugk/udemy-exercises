@@ -1,74 +1,132 @@
-// You will not change anything in this file.
+#include <stdio.h>
 
-#ifndef EXERCISE_H
-#define EXERCISE_H
-
-
+// Define a structure to hold student data
+const int max_students = 100;
 
 typedef struct {
-    char title[20];    // title of book.
-    char author[20];   // author of book
-    double price;      // price of book.
-}Book;
+    int roll;
+    char name[20];
+    double gp;
+    int max_students;
+} Student;
 
+// Function to input data for a new student record
+void inputStudent(Student *sp, const int max_students, Student students[], int numStudents) {
+    printf("Enter roll: ");
+    scanf("%d", &sp->roll);
 
-double getCourierCharge(Book *b_ptr, unsigned distance);
-
-#endif // _EXERCISE_H
-
-
-//---------------------------------//
-
-// You will not need to write any main methor, also you will not write any printf or scanf to print or scan data
-// for this assignment, the function getCourierCharge will be called by the tester and that will pass all the parameters.
-#include <string.h>
-#include "book.h"
-/**
- * The following function receives 2 parameters, first is a pointer to book object, this book object will be
- * allocated and initialized by the tester.
- * Second parameter is the distance in Miles, the book has to be dispatched to this distance.
- *
- *
- * Your task: You will calculate the courier charge based on the distance of the book and some other parameters
- * as stated in the instruction, and then you will return that charge to the tester using the return statement.
- */
-double getCourierCharge(Book *b_ptr, unsigned distance){
-    /*
-        Courier Base charge $5
-        distance > 0 and <= 100 miles       Only base charge no extra charge for any distance.
-        distance > 100 and <=250 miles      base charge + 10% of the price of book
-        distance > 250 and <=500 miles      base charge + 15% of the price of book
-        distance > 500 miles                base charge + 20% of the price of book.
-        
-        Additional requirements: If the author of the book is "Tagore" (the spelling is exactly this), then
-        take 5% discount on overall courier charge.
-        
-        Finally return the courier charge using return keyword. Note that the return type of the function is double,
-        hence you are expected to return the courier charge as double.
-        
-    */
-    
-    
-      double baseCharge = 5;         // Define the base courier charge
-    double additionalCharge = 0;   // Initialize additional charge to zero
-
-    // Calculate additional charge based on the distance
-    if (distance > 100 && distance <= 250) {
-        additionalCharge = b_ptr->price * 0.10;
-    } else if (distance > 250 && distance <= 500) {
-        additionalCharge = b_ptr->price * 0.15;
-    } else if (distance > 500) {
-        additionalCharge = b_ptr->price * 0.20;
+    // Check if the entered roll number is valid and unique
+    if (sp->roll < 1 || sp->roll > max_students || students[sp->roll - 1].roll != 0) {
+        printf("Invalid or duplicate roll number. Please try again.\n");
+        return; // Return without creating a new record
     }
 
-    // Calculate the initial courier charge
-    double totalCharge = baseCharge + additionalCharge;
+    printf("Enter name: ");
+    scanf(" %[^\n]", sp->name);
 
-    // Apply discount for author "Tagore"
-    if (strcmp(b_ptr->author, "Tagore") == 0) {
-        totalCharge *= 0.95;
-    }
-
-    return totalCharge;  // Return the final courier charge as a double
-
+    printf("Enter grade point: ");
+    scanf("%lf", &sp->gp);
 }
+
+// Function to print the data of a student record
+void printStudent(Student sp) {
+    printf("Roll: %4d, Name: %-20s GPA: %10.2lf\n", sp.roll, sp.name, sp.gp);
+}
+
+// Function to print selected student data based on roll number
+void printSelectedStudentData(Student students[], int numStudents) {
+    int searchRollNumber;
+    printf("Enter the Roll Number: ");
+    scanf("%d", &searchRollNumber);
+
+    // Search for a matching roll number in the array of student records
+    for (int i = 0; i < numStudents; i++) {
+        if (students[i].roll == searchRollNumber) {
+            printStudent(students[i]);
+            return; // Return once a match is found to avoid unnecessary iteration
+        }
+    }
+
+    // If no matching roll number was found, display an error message
+    printf("Student with Roll Number %d not found.\n", searchRollNumber);
+}
+
+// Function to add student data
+void addStudentData(Student students[], int *numStudents) {
+    if (*numStudents >= max_students) {
+        printf("Maximum number of students reached.\n");
+        return;
+    }
+
+    Student newStudent = {0}; // Initialize a new student with zero values
+    int rollNumber, duplicateCheck;
+
+    do {
+        duplicateCheck = 0;
+        printf("Enter Roll Number: ");
+        scanf("%d", &rollNumber);
+
+        for (int i = 0; i < *numStudents; i++) {
+            if (students[i].roll == rollNumber) {
+                duplicateCheck = 1;
+                printf("Invalid or duplicate roll number. Please try again.\n");
+                break;
+            }
+        }
+    } while (duplicateCheck); // Repeat until a unique and valid roll number is entered
+
+    newStudent.roll = rollNumber;
+    printf("Enter Name: ");
+    scanf("%s", newStudent.name);
+    printf("Enter GPA: ");
+    scanf("%lf", &newStudent.gp);
+
+    students[*numStudents] = newStudent; // Add the new student to the array
+    (*numStudents)++; // Increment the number of students in memory
+}
+
+
+int main(void) {
+    const int max_students = 100; // Maximum number of students that can be stored
+    Student students[max_students] = {0}; // Array to hold student records
+    int numStudents = 0; // Current number of students
+    int selection; // User's menu selection
+    Student s; // Temporary Student structure for input
+
+    do {
+        printf("Enter Mode:\n1. Add Data\n2. Print Selected Data\n3. Print All Data\n4. Exit\n");
+        scanf("%d", &selection);
+
+        switch (selection) {
+            case 1:
+                // Add Data option: Create a new student record if there's room for more students
+                addStudentData(students, &numStudents);
+                break;
+            case 2:
+                // Print Selected Data option:
+                printSelectedStudentData(students, numStudents);
+                
+                break;
+            case 3:
+                // Print All Data option: Print data for all existing student records
+                if (numStudents > 0) {
+                    for (int i = 0; i < numStudents; i++) {
+                        printStudent(students[i]);
+                    }
+                } else {
+                    printf("No students data to display.\n");
+                }
+                break;
+            case 4:
+                // Exit option: Print an exit message and end the program
+                printf("Exiting the program.\n");
+                break;
+            default:
+                // Handle invalid menu selections
+                printf("Invalid selection. Please try again.\n");
+        }
+    } while (selection != 4); // Continue looping as long as the user hasn't selected to exit
+
+    return 0;
+}
+
