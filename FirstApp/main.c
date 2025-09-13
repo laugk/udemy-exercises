@@ -1,48 +1,74 @@
-// Please do not change anything in this header.
+// You will not change anything in this file.
+
 #ifndef EXERCISE_H
 #define EXERCISE_H
-// The following is the structure type Car
-typedef struct {
-    char make[20];    // company that makes the car
-    char model[20];   // model of the car
-    int year;         // year of making
-}Car;
 
-Car getCar();
+
+
+typedef struct {
+    char title[20];    // title of book.
+    char author[20];   // author of book
+    double price;      // price of book.
+}Book;
+
+
+double getCourierCharge(Book *b_ptr, unsigned distance);
 
 #endif // _EXERCISE_H
 
+
 //---------------------------------//
 
-// Please do not attempt to do anything other than what is instructed. This method will be called by the tester.
-// You will not write any main method or any printf to print anything into the console for this assignment.
-
-#include <stdio.h>
+// You will not need to write any main methor, also you will not write any printf or scanf to print or scan data
+// for this assignment, the function getCourierCharge will be called by the tester and that will pass all the parameters.
 #include <string.h>
-//#include "car.h"
+#include "book.h"
+/**
+ * The following function receives 2 parameters, first is a pointer to book object, this book object will be
+ * allocated and initialized by the tester.
+ * Second parameter is the distance in Miles, the book has to be dispatched to this distance.
+ *
+ *
+ * Your task: You will calculate the courier charge based on the distance of the book and some other parameters
+ * as stated in the instruction, and then you will return that charge to the tester using the return statement.
+ */
+double getCourierCharge(Book *b_ptr, unsigned distance){
+    /*
+        Courier Base charge $5
+        distance > 0 and <= 100 miles       Only base charge no extra charge for any distance.
+        distance > 100 and <=250 miles      base charge + 10% of the price of book
+        distance > 250 and <=500 miles      base charge + 15% of the price of book
+        distance > 500 miles                base charge + 20% of the price of book.
+        
+        Additional requirements: If the author of the book is "Tagore" (the spelling is exactly this), then
+        take 5% discount on overall courier charge.
+        
+        Finally return the courier charge using return keyword. Note that the return type of the function is double,
+        hence you are expected to return the courier charge as double.
+        
+    */
+    
+    
+      double baseCharge = 5;         // Define the base courier charge
+    double additionalCharge = 0;   // Initialize additional charge to zero
 
-Car getCar(void){
-    // You will write statements to assign the following values for the Car attributes
-    // Please look into the Car type in the header file.
-    // Instruction 1: declare a Car object in the following line.
+    // Calculate additional charge based on the distance
+    if (distance > 100 && distance <= 250) {
+        additionalCharge = b_ptr->price * 0.10;
+    } else if (distance > 250 && distance <= 500) {
+        additionalCharge = b_ptr->price * 0.15;
+    } else if (distance > 500) {
+        additionalCharge = b_ptr->price * 0.20;
+    }
 
-    Car car;
-    // Instruction 2: Assign "Toyota" to the make property of the car object that you have declared.
-    // Since make is a character array, you need to use strcpy of string.h
+    // Calculate the initial courier charge
+    double totalCharge = baseCharge + additionalCharge;
 
-    strcpy (car.make, "Toyota");
-    
-    // Instruction 3: Assign "Camry" to the model property of the car object that you have declared.
-    // since model is a character array, you will use strcpy for assigning the model .
-    strcpy (car.model, "Camry");
-    // Instruction 4: Assign 2010 to the year property of the car object that you have declared.
-    
-    car.year = 2010;
-    // Instruction 5: Return the car object that you have created to the caller using the return statement.
-    //  Look into the return type of this function, it is Car, so you must return the car object that you have
-    // declared and initialized as per the instructions.
-    
-    return car;
-    
-     
+    // Apply discount for author "Tagore"
+    if (strcmp(b_ptr->author, "Tagore") == 0) {
+        totalCharge *= 0.95;
+    }
+
+    return totalCharge;  // Return the final courier charge as a double
+
 }
