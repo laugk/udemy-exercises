@@ -1,70 +1,25 @@
-#include <stdio.h>
+#include <stdio.h> // Include the standard input-output library header file for functions like printf and scanf.
+#include <stdarg.h> // Include the variable argument list handling library header file for va_list, va_start, va_arg, and va_end functions.
 
+// This function calculates the sum of a varying number of integers using variable arguments.
+int sum(int count, ...) { // The function takes an integer count as the first argument, followed by any number of integer arguments.
+    int s = 0; // Initialize a variable 's' to store the sum of the integers.
+    va_list ap; // Declare a va_list type variable 'ap' for accessing variable arguments.
+    va_start(ap, count); // Initialize 'ap' with the first argument following 'count'.
 
-typedef union {
-    double weight;
-    int size;
-    char color[10];
-} Description;
-
-typedef struct {
-    int ino;
-    char iname[30];
-    Description d;
-    char dtype;
-    double price;
-}Item;
-
-void inputItem(Item*ip) {
-    printf("Enter Item Number: ");
-    scanf("%d", &ip->ino);
-    printf("Enter Item Name: ");
-    scanf(" %s", ip->iname);
-    printf("Enter Price: ");
-    scanf("%lf", &ip->price);
-    
-    printf("Weight / Size / Color? w for weight, s for size, c for color: ");
-    scanf(" %c", &ip->dtype);
-    
-    if (ip->dtype == 's') {
-        printf("Enter Size: ");
-        scanf("%d", &ip->d.size);
+    int i; // Declare an integer variable 'i' for loop iteration.
+    for (i=1; i<=count; i++) { // Loop through the variable arguments 'count' number of times.
+        s += va_arg(ap,int); // Add each integer argument to the sum 's' using va_arg function and specifying its type as int.
     }
-    
-    else if (ip->dtype == 'c') {
-        printf("Enter Color: ");
-        scanf(" %s", ip->d.color);
-    }
-    
-    else if (ip->dtype == 'w') {
-        printf("Enter Weight: ");
-        scanf("%lf", &ip->d.weight);
-    }
+    va_end(ap); // Clean up the variable argument list.
+    return s; // Return the final sum 's'.
 }
 
-void printItem(Item item) {
-    printf("Inum: %d\n", item.ino);
-    printf("Iname: %s\n", item.iname);
-    printf("Price: %10.2lf\n", item.price);
-    
-    if(item.dtype == 's') {
-        printf("Size: %d\n", item.d.size);
-    }
-    
-    else if (item.dtype == 'c') {
-        printf("Color: %s\n", item.d.color);
-    }
-    
-    else if (item.dtype == 'w') {
-        printf("Weight: %10.2lf\n", item.d.weight);
-    }
-}
-
-
+// Main driver code for testing the sum() function.
 int main(void) {
-    Item item;
-    inputItem(&item);
-    printItem(item);
-    return 0;
+    int k = sum (4,20,10,4,2); // Call the sum() function with 4 integers and store the result in variable 'k'.
+    printf("Sum = %d\n", k); // Print the final sum to the console.
+
+    return 0; // Return 0 to indicate successful program execution.
 }
 
